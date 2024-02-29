@@ -46,7 +46,7 @@ def add_feature(src,dest,channel_idx,variable_name,src_idx=0,frmt='nc'):
         else:
             ims = fsrc
         print(ims.shape)
-        fdest['fields'][:,channel_idx,:,:] = ims
+        fdest['fields'][:,channel_idx] = ims
     fsrc.close()
                 
 def make_h5_file(surf,pl,out):
@@ -73,7 +73,7 @@ if __name__ == '__main__':
     make_h5_file(args.surface,args.pl,args.output)
 
     for i,(var,src_idx,file) in enumerate(CHANNELS):
-        print(var,src_idx,file)
+        print(i,var,src_idx,file)
         add_feature(args.surface if file == 'surface' else args.pl,args.output,i,var,src_idx)
         print('Written channel #'+str(i))
     print("DONE!")
