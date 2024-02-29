@@ -73,6 +73,7 @@ if __name__ == '__main__':
     make_h5_file(args.surface,args.pl,args.output)
 
     for i,(var,src_idx,file) in enumerate(CHANNELS):
+        print(var,src_idx,file)
         add_feature(args.surface if file == 'surface' else args.pl,args.output,i,var,src_idx)
         print('Written channel #'+str(i))
     print("DONE!")
