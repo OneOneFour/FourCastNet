@@ -58,7 +58,7 @@ def make_h5_file(surf,pl,out):
     width = fsurf.dimensions['longitude'].size
     height = fsurf.dimensions['latitude'].size
     with h5py.File(out,'w') as fdest:
-        fdest.create_dataset('fields',(time,height,width))
+        fdest.create_dataset('fields',(time,DEFAULT_NCHANNELS,height,width))
     fsurf.close()
 
 
