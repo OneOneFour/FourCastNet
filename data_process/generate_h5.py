@@ -67,7 +67,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Create FourCastNet H5 file from ERA5 inputs")
     parser.add_argument('surface',type=lambda x: is_valid_file(parser,x),help='ERA5 Surface Variable file (netCDF)')
     parser.add_argument('pl',type=lambda x: is_valid_file(parser,x),help='ERA5 Output Variable file (netCDF)')
-    parser.add_argument('output',type=lambda x: is_valid_file(parser,x),help='Output location of h5 file')
+    parser.add_argument('output',type=str,help='Output location of h5 file')
 
     args = parser.parse_args()
     make_h5_file(args.surface,args.pl,args.output)
