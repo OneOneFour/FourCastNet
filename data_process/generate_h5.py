@@ -44,7 +44,7 @@ def add_feature(src,dest,channel_idx,variable_name,src_idx=0,frmt='nc'):
         if len(fsrc.shape) == 4:
             ims = fsrc[:,src_idx]
         else:
-            ims = fsrc
+            ims = fsrc[:]
         fdest['fields'][:,channel_idx] = ims
     fsrc.close()
                 
