@@ -46,7 +46,6 @@ def add_feature(src,dest,channel_idx,variable_name,src_idx=0,frmt='nc'):
         else:
             ims = fsrc[:]
         fdest['fields'][:,channel_idx] = ims
-    fsrc.close()
                 
 def make_h5_file(surf,pl,out):
     fsurf = DS(surf,'r')
