@@ -46,6 +46,7 @@ def add_feature(src,dest,channel_idx,variable_name,src_idx=0,frmt='nc'):
         else:
             ims = fsrc
         print(ims.shape)
+        print(fdest)
         fdest['fields'][:,channel_idx] = ims
     fsrc.close()
                 
