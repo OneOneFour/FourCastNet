@@ -5,7 +5,7 @@ import os
 import argparse
 
 
-DEFAULT_NCHANNELS = 20
+DEFAULT_NCHANNELS = 21
 CHANNELS = (
     ('u10',0,'surface'), # 0 surface
     ('v10',0,'surface'), # 1 surface
