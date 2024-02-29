@@ -39,7 +39,7 @@ def add_feature(src,dest,channel_idx,variable_name,src_idx=0,frmt='nc'):
     if frmt == 'nc':
         fsrc = DS(src,'r',format="NETCDF4").variables[variable_name]
     elif frmt == 'h5':
-        fsrc = h5py.File(src,'r')[variable_name]]
+        fsrc = h5py.File(src,'r')[variable_name]
     with h5py.File(dest,'a') as fdest:
         if len(fsrc.shape) == 4:
             ims = fsrc[:,src_idx]
