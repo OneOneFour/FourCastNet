@@ -35,19 +35,18 @@ def is_valid_file(parser, arg):
     else:
         return arg # return an open file handle
 
-def add_feature(src,dest,channel_idx,varslist,src_idx=0,frmt='nc'):
-    for variable_name in varslist:
-        if frmt == 'nc':
-            fsrc = DS(src,'r',format="NETCDF4").variables[variable_name]
-        elif frmt == 'h5':
-            fsrc = h5py.File(src,'r')[varslist[0]]
-        with h5py.File(dest,'a') as fdest:
-            if len(fsrc.shape) == 4:
-                ims = fsrc[:,src_idx]
-            else:
-                ims = fsrc
-            fdest['fields'][:,channel_idx,:,:] = ims
-        fsrc.close()
+def add_feature(src,dest,channel_idx,variable_name,src_idx=0,frmt='nc'):
+    if frmt == 'nc':
+        fsrc = DS(src,'r',format="NETCDF4").variables[variable_name]
+    elif frmt == 'h5':
+        fsrc = h5py.File(src,'r')[varslist[0]]
+    with h5py.File(dest,'a') as fdest:
+        if len(fsrc.shape) == 4:
+            ims = fsrc[:,src_idx]
+        else:
+            ims = fsrc
+        fdest['fields'][:,channel_idx,:,:] = ims
+    fsrc.close()
                 
 def make_h5_file(surf,pl,out):
     fsurf = DS(surf,'r')
