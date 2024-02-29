@@ -40,13 +40,13 @@ def add_feature(src,dest,channel_idx,variable_name,src_idx=0,frmt='nc'):
         fsrc = DS(src,'r',format="NETCDF4").variables[variable_name]
     elif frmt == 'h5':
         fsrc = h5py.File(src,'r')[varslist[0]]
-    with h5py.File(dest,'a') as fdest:
+    with h5py.File(dest,'w') as fdest:
         if len(fsrc.shape) == 4:
             ims = fsrc[:,src_idx]
         else:
             ims = fsrc
         print(ims.shape)
-        print(fdest)
+        print(fdest['fields'])
         fdest['fields'][:,channel_idx] = ims
     fsrc.close()
                 
