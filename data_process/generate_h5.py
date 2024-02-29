@@ -74,4 +74,5 @@ if __name__ == '__main__':
 
     for i,(var,src_idx,file) in enumerate(CHANNELS):
         add_feature(args.surface if file == 'surface' else args.pl,args.output,i,var,src_idx)
+        print('Written channel #'+str(i))
     print("DONE!")
