@@ -45,8 +45,6 @@ def add_feature(src,dest,channel_idx,variable_name,src_idx=0,frmt='nc'):
             ims = fsrc[:,src_idx]
         else:
             ims = fsrc
-        print(ims.shape)
-        print(fdest['fields'])
         fdest['fields'][:,channel_idx] = ims
     fsrc.close()
                 
@@ -60,7 +58,7 @@ def make_h5_file(surf,pl,out):
     width = fsurf.dimensions['longitude'].size
     height = fsurf.dimensions['latitude'].size
     with h5py.File(out,'w') as fdest:
-        fdest.create_dataset('fields',(time,DEFAULT_NCHANNELS,height,width))
+        fdest.create_dataset('fields',(time,DEFAULT_NCHANNELS,height,width),'f')
     fsurf.close()
 
 
